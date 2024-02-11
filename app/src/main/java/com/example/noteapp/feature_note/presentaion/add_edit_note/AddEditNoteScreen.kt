@@ -59,7 +59,6 @@ fun AddEditNoteScreen (
     val contentState = viewModel.noteContent.value
 
 
-    val scaffoldState = rememberScrollState()
 
     val noteBackgroundAnimatable = remember {
         Animatable(
@@ -68,55 +67,52 @@ fun AddEditNoteScreen (
     }
 
     val scope = rememberCoroutineScope()
-    val snackbarHostState = remember { SnackbarHostState() }
 
-    LaunchedEffect(key1 = true){
+
+    LaunchedEffect(key1 = true) {
         viewModel.eventFlow.collectLatest { event ->
-
             when(event) {
-                is AddEditNoteViewModel.UiEvent.ShowSnackBar -> {
-                    snackbarHostState.showSnackbar(
-                        message = event.message,
-                    )
-                }
-
+//                is AddEditNoteViewModel.UiEvent.ShowSnackbar -> {
+//                    scaffoldState.snackbarHostState.showSnackbar(
+//                        message = event.message
+//                    )
+//                }
                 is AddEditNoteViewModel.UiEvent.SaveNote -> {
-
                     navController.navigateUp()
                 }
-            }
 
+                else -> {}
+            }
         }
     }
-
 
     Scaffold(
         floatingActionButton = {
             FloatingActionButton(onClick = {
                 viewModel.onEvent(AddEditNoteEvent.SaveNote)
-            },Modifier.background(MaterialTheme.colorScheme.primary)) {
-
+            }) {
                 Icon(imageVector = Icons.Default.Save, contentDescription = "Save Note" )
             }
         }
     ) {
-
-        Column(modifier = Modifier
-            .fillMaxSize()
-            .background(noteBackgroundAnimatable.value)
-            .padding(16.dp)) {
-
-            Row (modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp), horizontalArrangement = Arrangement.SpaceBetween
-            ){
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(noteBackgroundAnimatable.value)
+                .padding(16.dp)
+        ) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
                 Note.noteColors.forEach { color ->
                     val colorInt = color.toArgb()
                     Box(
-                        modifier =
-                        Modifier
+                        modifier = Modifier
                             .size(50.dp)
-                            .shadow(50.dp, CircleShape)
+                            .shadow(15.dp, CircleShape)
                             .clip(CircleShape)
                             .background(color)
                             .border(
@@ -137,11 +133,11 @@ fun AddEditNoteScreen (
                                 }
                                 viewModel.onEvent(AddEditNoteEvent.ChangeColor(colorInt))
                             }
-
                     )
                 }
             }
             Spacer(modifier = Modifier.height(16.dp))
+
             TransparentHintTextField(
                 text = titleState.text,
                 hint = titleState.hint,
@@ -153,8 +149,11 @@ fun AddEditNoteScreen (
                 },
                 isHintVisible = titleState.isHintVisible,
                 singleLine = true,
-                textStyle = MaterialTheme.typography.bodyMedium,
-            )
+                textStyle = MaterialTheme.typography.bodyLarge,
+             )
+
+
+
             Spacer(modifier = Modifier.height(16.dp))
             TransparentHintTextField(
                 text = contentState.text,
@@ -165,9 +164,10 @@ fun AddEditNoteScreen (
                 onFocusChange = {
                     viewModel.onEvent(AddEditNoteEvent.ChangeFocusContent(it))
                 },
-                isHintVisible = titleState.isHintVisible,
-                textStyle = MaterialTheme.typography.bodySmall,
+                isHintVisible = contentState.isHintVisible,
+                textStyle = MaterialTheme.typography.bodyMedium
             )
+
         }
     }
 }
