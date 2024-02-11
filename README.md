@@ -17,12 +17,12 @@ In this app, I used the following :
 
 Please don't forget the stars  ⭐⭐⭐⭐⭐
 
-[//]: # ()
-[//]: # (# 📸Screenshots)
 
-[//]: # ()
-[//]: # (<img src="https://github.com/jilutech/currency_converter/tree/main/app/screenshots/dashboard_light.png" width="200">)
+# 📸Screenshots
 
-[//]: # (<img src="https://github.com/jilutech/currency_converter/tree/main/app/screenshots/dashboard_dark.png" width="200">)
+
+<img src="https://github.com/jilutech/currency_converter/tree/main/app/screenshots/add_edit_page.png" width="200">
+
+<img src="https://github.com/jilutech/currency_converter/tree/main/app/screenshots/home_screen.png" width="200">
 
 [//]: # (<img src="https://github.com/jilutech/currency_converter/tree/main/app/screenshots/bottomsheet.png" width="200">)
