@@ -5,6 +5,7 @@ import androidx.room.PrimaryKey
 import com.example.noteapp.ui.theme.Pink80
 import com.example.noteapp.ui.theme.Purple80
 import com.example.noteapp.ui.theme.PurpleGrey80
+import java.lang.Exception
 
 @Entity
 data class Note(
@@ -18,3 +19,5 @@ data class Note(
         val noteColors = listOf(Purple80,PurpleGrey80,Pink80)
     }
 }
+
+class InvalidNoteException(message: String):Exception(message)

@@ -14,12 +14,12 @@ import kotlinx.coroutines.flow.map
 //utility functions to make the code more readable, but there should only be one public function.
 
 
-class GetNoteUseCase(
+class GetNotesUseCase(
     private val noteRepository: NoteRepository
 ) {
 
     operator fun invoke(
-        noteOrder: NoteOrder = NoteOrder.Date(OrderType.Decending)
+        noteOrder: Int = NoteOrder.Date(OrderType.Decending)
     ): Flow<List<Note>> {
         return noteRepository.getNotes().map { notes ->
             when(noteOrder.orderType) {
