@@ -8,12 +8,14 @@ import com.example.noteapp.feature_note.domain.model.Note
 import com.example.noteapp.feature_note.domain.use_case.NoteUseCases
 import com.example.noteapp.feature_note.domain.util.NoteOrder
 import com.example.noteapp.feature_note.domain.util.OrderType
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@HiltViewModel
 class NoteViewModel @Inject constructor(
     private val noteUseCase: NoteUseCases
 ) : ViewModel(){
@@ -69,7 +71,7 @@ class NoteViewModel @Inject constructor(
     private fun getNote(noteOrder: NoteOrder) {
 
         getNotesJob?.cancel()
-        noteUseCase.getNotes.invoke(noteOrder)
+        getNotesJob = noteUseCase.getNotes.invoke(noteOrder)
             .onEach { note ->
                 _state.value = state.value.copy(
                     noteOrder = noteOrder,

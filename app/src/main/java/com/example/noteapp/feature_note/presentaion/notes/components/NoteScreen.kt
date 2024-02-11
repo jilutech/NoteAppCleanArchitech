@@ -31,6 +31,7 @@ import androidx.navigation.NavController
 import com.example.noteapp.TestTags
 import com.example.noteapp.feature_note.presentaion.notes.NoteViewModel
 import com.example.noteapp.feature_note.presentaion.notes.NotesEvent
+import com.example.noteapp.feature_note.presentaion.util.Screen
 import kotlinx.coroutines.launch
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -48,14 +49,12 @@ fun NotesScreen(
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {
-//                    navController.navigate(Screen.AddEditNoteScreen.route)
+                    navController.navigate(Screen.NoteAddEditScreen.route)
                 })
             {
                 Icon(imageVector = Icons.Default.Add, contentDescription = "Add")
             }
         }
-
-
     ) {
         Column(
             modifier = Modifier
@@ -108,10 +107,10 @@ fun NotesScreen(
                         modifier = Modifier
                             .fillMaxWidth()
                             .clickable {
-//                                navController.navigate(
-//                                    Screen.AddEditNoteScreen.route +
-//                                            "?noteId=${note.id}&noteColor=${note.color}"
-//                                )
+                                navController.navigate(
+                                    Screen.NoteAddEditScreen.route +
+                                            "?noteId=${note.id}&noteColor=${note.color}"
+                                )
                             },
                         onDeleteClick = {
                             viewModel.onEvent(NotesEvent.DeleteNote(note))

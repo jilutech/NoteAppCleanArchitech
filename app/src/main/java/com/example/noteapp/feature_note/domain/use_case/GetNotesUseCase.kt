@@ -19,7 +19,7 @@ class GetNotesUseCase(
 ) {
 
     operator fun invoke(
-        noteOrder: Int = NoteOrder.Date(OrderType.Decending)
+        noteOrder: NoteOrder = NoteOrder.Date(OrderType.Decending)
     ): Flow<List<Note>> {
         return noteRepository.getNotes().map { notes ->
             when(noteOrder.orderType) {
