@@ -20,5 +20,5 @@ Please don't forget the stars  ⭐⭐⭐⭐⭐
 
 # 📸Screenshots
 
-<img src="https://github.com/jilutech/Invoice_Generator-jetpack-compose/blob/main/app/screenshots/dashboard.png" width="200">
-<img src="https://github.com/jilutech/Invoice_Generator-jetpack-compose/blob/main/app/screenshots/add_edit.png" width="200">
+<img src="https://github.com/jilutech/NoteAppCleanArchitect/blob/main/app/screenshots/dashboard.png" width="200">
+<img src="https://github.com/jilutech/NoteAppCleanArchitect/blob/main/app/screenshots/add_edit.png" width="200">
