@@ -16,7 +16,7 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.example.noteapp.HiltTestRunner"
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -47,8 +47,11 @@ android {
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
+            merges += "META-INF/LICENSE.md"
+            merges += "META-INF/LICENSE-notice.md"
         }
     }
+
 }
 
 dependencies {
@@ -101,7 +104,7 @@ dependencies {
     testImplementation ("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.1")
     testImplementation ("com.google.truth:truth:1.1.3")
 //    testImplementation ("com.squareup.okhttp3:mockwebserver:4.9.1")
-//    testImplementation ("io.mockk:mockk:1.10.5")
+    testImplementation ("io.mockk:mockk:1.13.9")
     debugImplementation ("androidx.compose.ui:ui-test-manifest:1.6.1")
 
     // Instrumentation tests
@@ -114,7 +117,7 @@ dependencies {
     androidTestImplementation ("androidx.test.ext:junit:1.1.5")
     androidTestImplementation ("androidx.test:core-ktx:1.5.0")
     androidTestImplementation ("com.squareup.okhttp3:mockwebserver:4.9.1")
-    androidTestImplementation ("io.mockk:mockk-android:1.10.5")
+    androidTestImplementation ("io.mockk:mockk-android:1.13.9")
     androidTestImplementation ("androidx.test:runner:1.5.2")
 
 }
